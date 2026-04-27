@@ -1,3 +1,5 @@
+![Billy Bill AI Logo](assets/logo.png)
+
 # billy-bill-ai
 An AI assisted community sourced Bill
 

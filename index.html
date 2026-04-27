@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Billy Bill AI | AI-Assisted Community-Sourced Bills</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <style>
     :root {
       --bg: #f4f8ff;
@@ -57,9 +58,30 @@
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
       font-weight: 700;
       color: var(--primary);
       letter-spacing: 0.01em;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 0.25rem 0.35rem;
+    }
+
+    .brand:hover,
+    .brand:focus-visible {
+      background: var(--bg-soft);
+      outline: none;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      background: #fff;
     }
 
     .nav-links {
@@ -69,22 +91,26 @@
     }
 
     .nav-link {
-      border: 1px solid var(--border);
-      background: #f8fbff;
-      color: var(--text);
+      border: 1px solid #1f52c8;
+      background: #2f62d8;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       border-radius: 10px;
-      padding: 0.45rem 0.75rem;
+      padding: 0.5rem 0.9rem;
       cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      box-shadow: 0 5px 14px rgba(34, 76, 167, 0.28);
     }
 
     .nav-link.active,
     .nav-link:hover,
     .nav-link:focus-visible {
-      border-color: #b8cbef;
-      background: var(--bg-soft);
+      border-color: #123d9f;
+      background: #1848b8;
+      transform: translateY(-1px);
       outline: none;
+      box-shadow: 0 7px 16px rgba(24, 66, 152, 0.34);
     }
 
     .page {
@@ -239,26 +265,23 @@
 <body>
   <main id="app" class="layout">
     <nav class="top-nav" aria-label="Main navigation">
-      <div class="brand">Billy Bill AI</div>
+      <a href="#/" class="brand" @click="goToPage('landing')" aria-label="Go to homepage">
+        <img src="assets/logo.png" alt="Billy Bill AI logo" class="brand-logo" />
+        <span>Billy Bill AI</span>
+      </a>
       <div class="nav-links">
-        <a
-          href="#/"
-          class="nav-link"
-          :class="{ active: currentPage === 'landing' }"
-          @click="goToPage('landing')"
-        >Landing</a>
         <a
           href="#/bills"
           class="nav-link"
-          :class="{ active: currentPage === 'bills' }"
+          :class="{ active: currentPage === 'bills' || currentPage === 'bill' }"
           @click="goToPage('bills')"
-        >All Bills</a>
+        >Bills</a>
         <a
-          href="#/bill"
+          href="#/about"
           class="nav-link"
-          :class="{ active: currentPage === 'bill' }"
-          @click="goToBill(selectedBillId)"
-        >Specific Bill</a>
+          :class="{ active: currentPage === 'about' }"
+          @click="goToPage('about')"
+        >About</a>
       </div>
     </nav>
 
@@ -314,6 +337,17 @@
       <p v-if="filteredBills.length === 0" class="empty-state">No bill titles match your search.</p>
     </section>
 
+
+
+    <section v-if="currentPage === 'about'" class="page" id="about" aria-label="About Billy Bill AI">
+      <h2>About Billy Bill AI</h2>
+      <p class="lead">
+        Billy Bill AI is a proof-of-concept civic platform where people can draft policy ideas and review AI-assisted bill text in one place.
+      </p>
+      <p class="muted">
+        The goal is to make legislative thinking easier to understand, easier to discuss, and more community-driven through transparent bill summaries and collaborative iteration.
+      </p>
+    </section>
     <section v-if="currentPage === 'bill'" class="page" id="bill" aria-label="Specific bill page">
       <h2>{{ selectedBill.title }}</h2>
       <p class="muted">{{ selectedBill.summary }}</p>
@@ -384,6 +418,7 @@
           this.currentPage = page;
           if (page === 'landing') window.location.hash = '#/';
           if (page === 'bills') window.location.hash = '#/bills';
+          if (page === 'about') window.location.hash = '#/about';
           if (page === 'bill') window.location.hash = `#/bill/${this.selectedBillId}`;
         },
         goToBill(billId) {
@@ -402,6 +437,11 @@
 
           if (hash === '#/bills') {
             this.currentPage = 'bills';
+            return;
+          }
+
+          if (hash === '#/about') {
+            this.currentPage = 'about';
             return;
           }
 
