@@ -6,15 +6,16 @@
   <title>Billy Bill AI | AI-Assisted Community-Sourced Bills</title>
   <style>
     :root {
-      --bg: #070b1a;
-      --card: rgba(18, 25, 55, 0.68);
-      --text: #eaf1ff;
-      --muted: #b8c5eb;
-      --primary: #7aa2ff;
-      --secondary: #5ef0d6;
-      --accent: #b88cff;
-      --border: rgba(255, 255, 255, 0.16);
-      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      --bg: #f4f8ff;
+      --bg-soft: #e8f0ff;
+      --card: #ffffff;
+      --text: #13233d;
+      --muted: #435776;
+      --primary: #2f62d8;
+      --secondary: #1f9d87;
+      --accent: #6f43d6;
+      --border: #d3def3;
+      --shadow: 0 14px 34px rgba(39, 68, 120, 0.12);
     }
 
     * {
@@ -28,131 +29,223 @@
       font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 8% 14%, rgba(122, 162, 255, 0.24), transparent 36%),
-        radial-gradient(circle at 88% 18%, rgba(184, 140, 255, 0.2), transparent 38%),
-        radial-gradient(circle at 20% 88%, rgba(94, 240, 214, 0.16), transparent 34%),
-        linear-gradient(160deg, #050812, #0d1433 52%, #121d46);
+        radial-gradient(circle at 8% 8%, rgba(47, 98, 216, 0.12), transparent 28%),
+        radial-gradient(circle at 88% 12%, rgba(111, 67, 214, 0.08), transparent 32%),
+        linear-gradient(180deg, var(--bg), #eff5ff 42%, #f8fbff);
       line-height: 1.6;
       display: flex;
       justify-content: center;
-      padding: 2rem 1rem;
+      padding: 1.2rem 1rem 2rem;
     }
 
     .layout {
       width: min(1080px, 100%);
       display: grid;
-      gap: 1.2rem;
+      gap: 1.1rem;
     }
 
-    .hero {
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 24px;
+      border-radius: 16px;
+      padding: 0.85rem 1.05rem;
       box-shadow: var(--shadow);
-      padding: clamp(1.6rem, 3.8vw, 3rem);
-      backdrop-filter: blur(12px);
-      overflow: hidden;
-      position: relative;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(100deg, rgba(255,255,255,0.08), transparent 45%);
+    .brand {
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      border: 1px solid var(--border);
+      background: #f8fbff;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 0.45rem 0.75rem;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      border-color: #b8cbef;
+      background: var(--bg-soft);
+      outline: none;
+    }
+
+    .hero,
+    .grid,
+    .bills {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: clamp(1.3rem, 3.2vw, 2.4rem);
     }
 
     .badge {
       display: inline-block;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      color: #021834;
-      background: linear-gradient(90deg, var(--secondary), #82ffd8);
+      color: #113976;
+      background: #dce8ff;
       border-radius: 999px;
-      padding: 0.35rem 0.8rem;
-      margin-bottom: 1rem;
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 0.95rem;
     }
 
     h1 {
-      font-size: clamp(1.8rem, 5vw, 3.3rem);
+      font-size: clamp(1.75rem, 5vw, 3rem);
       line-height: 1.15;
-      margin-bottom: 0.9rem;
-      max-width: 18ch;
+      margin-bottom: 0.8rem;
+      max-width: 20ch;
     }
 
     .lead {
       color: var(--muted);
-      font-size: clamp(1rem, 2.4vw, 1.15rem);
-      max-width: 65ch;
-      margin-bottom: 1.3rem;
+      font-size: clamp(1rem, 2.2vw, 1.1rem);
+      max-width: 70ch;
+      margin-bottom: 0.8rem;
     }
 
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      color: #071029;
-      background: linear-gradient(100deg, var(--primary), #a0beff);
-      border-radius: 12px;
-      padding: 0.75rem 1.1rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 10px 25px rgba(122, 162, 255, 0.3);
-    }
-
-    .cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(122, 162, 255, 0.4);
+    .poc-note {
+      border-left: 4px solid var(--secondary);
+      background: #eefcf8;
+      color: #1f4a42;
+      padding: 0.75rem 0.9rem;
+      border-radius: 10px;
+      max-width: 78ch;
+      font-size: 0.95rem;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.2rem;
+      gap: 1rem;
     }
 
     .card {
-      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.2rem;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
+      border-radius: 14px;
+      padding: 1rem;
+      background: #fbfdff;
     }
 
     .card h2 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       margin-bottom: 0.35rem;
-      color: #d9e6ff;
+      color: #1b3663;
     }
 
     .card p {
       color: var(--muted);
-      font-size: 0.96rem;
+      font-size: 0.95rem;
+    }
+
+    .bills h2 {
+      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+    }
+
+    .bills p {
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .query-wrap {
+      margin-bottom: 1rem;
+    }
+
+    .query-wrap label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    #billQuery {
+      width: min(520px, 100%);
+      border: 1px solid #bdd0f1;
+      border-radius: 10px;
+      padding: 0.58rem 0.7rem;
+      font-size: 0.98rem;
+      color: var(--text);
+      background: #fff;
+    }
+
+    #billQuery:focus-visible {
+      outline: 2px solid rgba(47, 98, 216, 0.35);
+      border-color: #769fe7;
+    }
+
+    .bill-list {
+      display: grid;
+      gap: 0.85rem;
+      list-style: none;
+    }
+
+    .bill-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.95rem;
+      background: #fcfdff;
+    }
+
+    .bill-item h3 {
+      font-size: 1.03rem;
+      color: #15345f;
+      margin-bottom: 0.35rem;
+    }
+
+    .empty-state {
+      color: #7b8da9;
+      font-style: italic;
+      padding: 0.35rem 0;
+      display: none;
     }
 
     footer {
-      color: #a7b3d4;
+      color: #5b6f90;
       text-align: center;
-      margin-top: 0.25rem;
       font-size: 0.92rem;
+      padding: 0.2rem;
     }
   </style>
 </head>
 <body>
   <main class="layout">
-    <section class="hero">
+    <nav class="top-nav" aria-label="Main navigation">
+      <div class="brand">Billy Bill AI</div>
+      <div class="nav-links">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#bills">Bills</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="home">
       <span class="badge">Billy Bill AI</span>
       <h1>An AI-assisted, community-sourced way to build better bills.</h1>
       <p class="lead">
         Billy Bill AI helps people draft legislation together. AI turns ideas into structured bill language,
         while the community reviews, suggests changes, and drives each proposal toward real-world impact.
       </p>
-      <a class="cta" href="#" aria-label="Start drafting a bill">Start drafting a bill →</a>
+      <p class="poc-note">
+        Proof of concept only: this is a social testing website/app for the idea that AI and the community can
+        work together to craft better bills — bills by the people, for the people.
+      </p>
     </section>
 
     <section class="grid" aria-label="How Billy Bill AI works">
@@ -181,9 +274,55 @@
       </article>
     </section>
 
+    <section class="bills" id="bills" aria-label="Bills list">
+      <h2>Draft Bills</h2>
+      <p>Browse current draft bill titles and filter the list with a query.</p>
+      <div class="query-wrap">
+        <label for="billQuery">Search bill titles</label>
+        <input id="billQuery" type="search" placeholder="Type a keyword like law enforcers or public school" />
+      </div>
+      <ul class="bill-list" id="billList">
+        <li class="bill-item" data-title="Double penalties for crimes committed by law enforcers or LEA personnel">
+          <h3>Double penalties for crimes committed by law enforcers or LEA personnel</h3>
+          <p>
+            This draft proposes that when a law enforcer or LEA personnel commits a crime, punishment should be
+            doubled (for example, a 2-year theft sentence would become 4 years) due to their training and duty.
+          </p>
+        </li>
+        <li class="bill-item" data-title="Mandatory public school enrollment for children of government workers and officials">
+          <h3>Mandatory public school enrollment for children of government workers and officials</h3>
+          <p>
+            This draft requires public or government employees, including elected officials, to enroll their
+            children in public schools.
+          </p>
+        </li>
+      </ul>
+      <p class="empty-state" id="emptyState">No bill titles match your search.</p>
+    </section>
+
     <footer>
       Built for collaborative lawmaking — where AI + people shape the next generation of policy.
     </footer>
   </main>
+
+  <script>
+    const queryInput = document.getElementById('billQuery');
+    const billItems = [...document.querySelectorAll('.bill-item')];
+    const emptyState = document.getElementById('emptyState');
+
+    queryInput.addEventListener('input', () => {
+      const query = queryInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      billItems.forEach((item) => {
+        const title = item.dataset.title.toLowerCase();
+        const isVisible = title.includes(query);
+        item.style.display = isVisible ? 'block' : 'none';
+        if (isVisible) visibleCount += 1;
+      });
+
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+  </script>
 </body>
 </html>
