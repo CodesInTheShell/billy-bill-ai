@@ -8,3 +8,7 @@ Refactored the site into a pure `index.html` Vue.js application (no npm/node) wi
 
 ## 2026-04-27
 Moved branding files into an `assets` folder, updated favicon/logo usage across the app and README, and streamlined navigation to Bills/About with stronger button styling. The home and specific-bill access now behave as logo-driven home and bill-list-driven detail navigation.
+
+## 2026-04-27
+Stabilized the navigation bar with a consistent height and applied a gradient background aligned to the site palette so it no longer shifts between pages. Rewrote the law-enforcer accountability bill into a full professional draft with formal sections and references to applicable Philippine laws.
+

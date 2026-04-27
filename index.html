@@ -49,12 +49,13 @@
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
-      background: var(--card);
-      border: 1px solid var(--border);
+      min-height: 76px;
+      background: linear-gradient(120deg, #1c4fbf 0%, #2f62d8 54%, #1f9d87 100%);
+      border: 1px solid #1d4fa7;
       border-radius: 16px;
-      padding: 0.85rem 1.05rem;
-      box-shadow: var(--shadow);
-      flex-wrap: wrap;
+      padding: 0.9rem 1.15rem;
+      box-shadow: 0 16px 30px rgba(21, 61, 145, 0.28);
+      flex-wrap: nowrap;
     }
 
     .brand {
@@ -62,16 +63,17 @@
       align-items: center;
       gap: 0.6rem;
       font-weight: 700;
-      color: var(--primary);
+      color: #ffffff;
       letter-spacing: 0.01em;
       text-decoration: none;
       border-radius: 10px;
       padding: 0.25rem 0.35rem;
+      white-space: nowrap;
     }
 
     .brand:hover,
     .brand:focus-visible {
-      background: var(--bg-soft);
+      background: rgba(255, 255, 255, 0.14);
       outline: none;
     }
 
@@ -80,37 +82,37 @@
       height: 34px;
       border-radius: 8px;
       object-fit: cover;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       background: #fff;
     }
 
     .nav-links {
       display: flex;
       gap: 0.6rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .nav-link {
-      border: 1px solid #1f52c8;
-      background: #2f62d8;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      background: rgba(255, 255, 255, 0.14);
       color: #ffffff;
       text-decoration: none;
       font-weight: 700;
       border-radius: 10px;
-      padding: 0.5rem 0.9rem;
+      padding: 0.5rem 0.95rem;
       cursor: pointer;
       transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
-      box-shadow: 0 5px 14px rgba(34, 76, 167, 0.28);
+      box-shadow: 0 6px 14px rgba(14, 42, 108, 0.28);
     }
 
     .nav-link.active,
     .nav-link:hover,
     .nav-link:focus-visible {
-      border-color: #123d9f;
-      background: #1848b8;
+      border-color: rgba(255, 255, 255, 0.72);
+      background: rgba(9, 27, 79, 0.42);
       transform: translateY(-1px);
       outline: none;
-      box-shadow: 0 7px 16px rgba(24, 66, 152, 0.34);
+      box-shadow: 0 8px 16px rgba(11, 31, 84, 0.38);
     }
 
     .page {
@@ -377,13 +379,22 @@
           bills: [
             {
               id: 'double-penalty-law-enforcers',
-              title: 'Double penalties for crimes committed by law enforcers or LEA personnel',
-              summary: 'Increase criminal penalties when law enforcers abuse authority and commit crimes.',
+              title: 'Public Trust and Law Enforcement Accountability Act',
+              summary: 'Prescribes higher penalties for crimes committed by law enforcement officers through abuse of official position, without reducing protections under existing laws.',
               content: [
-                'Section 1. Policy. This bill reinforces accountability by applying enhanced penalties when crimes are committed by law enforcers or law enforcement agency personnel while on duty or by misuse of office.',
-                'Section 2. Coverage. Any crime under existing penal laws, special laws, or local ordinances shall carry a penalty multiplier of two (2x) when the offender is a law enforcer acting under official authority.',
-                'Section 3. Aggravating Circumstances. Abuse of state-issued equipment, intimidation of witnesses, or concealment of evidence shall require immediate suspension and expedited case processing.',
-                'Section 4. Implementation. The Department of Justice and internal affairs units shall publish annual reports on filed cases, convictions, and disciplinary outcomes under this law.'
+                'Section 1. Short Title. This Act shall be known as the Public Trust and Law Enforcement Accountability Act.',
+                'Section 2. Declaration of Policy. The State shall ensure that public office remains a public trust and that no member of a law enforcement agency uses official authority, government resources, or custodial control to commit a crime.',
+                'Section 3. Coverage. This Act shall apply to any sworn or appointed law enforcement officer, including personnel of the Philippine National Police, National Bureau of Investigation, Bureau of Corrections, Bureau of Jail Management and Penology, and other government law enforcement units exercising police powers.',
+                'Section 4. Higher Penal Consequence. When an officer covered by this Act commits a felony under the Revised Penal Code, or an offense under a special penal law, by reason of office, on the occasion of duty, or through use of official authority, the principal penalty prescribed by law shall be imposed in the next higher degree. For divisible penalties, the maximum period shall be applied. In no case shall this Act reduce a higher penalty already prescribed by existing law.',
+                'Section 5. Relation to Existing Laws. This Act shall supplement, and not diminish, liabilities under the Revised Penal Code including Article 14 on abuse of public position, Republic Act No. 3019 (Anti-Graft and Corrupt Practices Act), Republic Act No. 6713 (Code of Conduct and Ethical Standards for Public Officials and Employees), Republic Act No. 9745 (Anti-Torture Act of 2009), Republic Act No. 7438 as amended (rights of persons under custodial investigation), and Republic Act No. 10591 (Comprehensive Firearms and Ammunition Regulation Act), when applicable.',
+                'Section 6. Accessory Penalties. In addition to imprisonment and fines, conviction under this Act shall carry perpetual disqualification from public office, forfeiture of retirement benefits except accrued lawful contributions, and cancellation of eligibility for appointment in any law enforcement agency, without prejudice to civil liability to victims.',
+                'Section 7. Command Responsibility and Administrative Action. Where evidence shows that immediate superiors tolerated, concealed, or failed to report offenses under this Act, such superiors shall be subject to administrative investigation and, when warranted, criminal prosecution under applicable laws. Filing of criminal charges shall trigger preventive suspension pursuant to existing civil service and disciplinary rules.',
+                'Section 8. Witness and Victim Protection. Complainants, witnesses, and their immediate families in prosecutions under this Act shall be endorsed by the Department of Justice for assessment under the Witness Protection, Security and Benefit Program, subject to existing law and rules.',
+                'Section 9. Transparency and Reporting. The Department of Justice, in coordination with the Napolcom, PNP Internal Affairs Service, and other concerned agencies, shall publish an annual report on complaints filed, cases prosecuted, conviction rates, and administrative sanctions involving offenses covered by this Act, while observing data privacy and witness security safeguards.',
+                'Section 10. Implementing Rules and Regulations. Within ninety (90) days from effectivity, the Department of Justice, Department of the Interior and Local Government, Napolcom, Civil Service Commission, and Commission on Human Rights shall promulgate the implementing rules and regulations.',
+                'Section 11. Separability Clause. If any provision of this Act is declared unconstitutional or invalid, the remaining provisions not affected thereby shall remain in full force and effect.',
+                'Section 12. Repealing Clause. All laws, decrees, orders, rules, and regulations inconsistent with this Act are hereby repealed or modified accordingly.',
+                'Section 13. Effectivity. This Act shall take effect fifteen (15) days after publication in the Official Gazette or in at least two (2) newspapers of general circulation.'
               ]
             },
             {
