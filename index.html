@@ -24,6 +24,11 @@
       padding: 0;
     }
 
+    html {
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
+    }
+
     body {
       min-height: 100vh;
       font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
@@ -62,6 +67,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
+      flex-shrink: 0;
       font-weight: 700;
       color: #ffffff;
       letter-spacing: 0.01em;
@@ -80,6 +86,7 @@
     .brand-logo {
       width: 34px;
       height: 34px;
+      flex: 0 0 34px;
       border-radius: 8px;
       object-fit: cover;
       border: 1px solid rgba(255, 255, 255, 0.5);
@@ -399,13 +406,24 @@
             },
             {
               id: 'public-school-enrollment-officials',
-              title: 'Mandatory public school enrollment for children of government workers and officials',
-              summary: 'Require children of public officials and employees to enroll in public schools, with limited exceptions.',
+              title: 'Public Education Solidarity and Accountability Act',
+              summary: 'Mandates public school enrollment for children of government workers and officials through phased implementation, strict safeguards, and capacity-linked exceptions.',
               content: [
-                'Section 1. Policy. Public education quality should be a shared responsibility; this bill aligns decision-makers with the outcomes of the public school system they govern and fund.',
-                'Section 2. Requirement. Children of elected officials and full-time government employees shall be enrolled in accredited public schools from elementary through secondary level.',
-                'Section 3. Exceptions. Limited exceptions are allowed for verified special education needs, geographic inaccessibility, or safety circumstances validated by an independent review board.',
-                'Section 4. Compliance. Agencies shall submit annual compliance disclosures; repeated non-compliance may trigger administrative sanctions and public reporting requirements.'
+                'Section 1. Short Title. This Act shall be known as the Public Education Solidarity and Accountability Act.',
+                'Section 2. Declaration of Policy. Pursuant to Article XIV, Section 1 of the 1987 Constitution and Republic Act No. 9155, the State shall protect and promote the right of all citizens to quality basic education and strengthen public trust by requiring public officials and government workers to share direct stake in the public school system.',
+                'Section 3. Scope and Coverage. This Act shall apply to elected officials, presidential appointees, career officials, uniformed personnel, and permanent, coterminous, or contractual civilian employees in all branches, constitutional commissions, government-owned or controlled corporations, state universities and colleges, and local government units, whose school-age children are enrolled in basic education.',
+                'Section 4. Mandatory Enrollment Rule. Covered children from Kindergarten to Grade 12 shall be enrolled in DepEd public schools or state-run laboratory schools, subject to the exceptions in this Act. Nothing in this Act shall prevent enrollment in recognized Alternative Learning System modalities authorized by law.',
+                'Section 5. Phased Implementation. Year 1 shall cover elected officials, appointees with Salary Grade 24 and above, and all senior officials directly supervising education, budget, or local governance. Year 3 shall include all remaining covered personnel in highly urbanized and component cities. Year 5 shall include all remaining covered personnel nationwide, subject to school-capacity certification by DepEd and local school boards.',
+                'Section 6. Exceptions. Exemptions may be granted only for: (a) learners with disabilities requiring support services not yet available in nearby public schools, consistent with Republic Act No. 11650; (b) absence of an accessible public school within reasonable travel time as defined in implementing rules; (c) substantiated safety threats certified by competent authorities; or (d) temporary transition for a school year in cases of official transfer during an academic term.',
+                'Section 7. Child Rights and Non-Discrimination. No child shall be publicly identified, shamed, or penalized due to compliance proceedings under this Act. Implementation shall observe Republic Act No. 7610 and other child-protection laws, and decisions shall prioritize the best interests of the child.',
+                'Section 8. Data Governance and Privacy. Agencies shall process school-enrollment compliance records only for lawful and specific purposes under Republic Act No. 10173. Public disclosures shall use aggregated, anonymized data and shall not reveal the personal information of minors.',
+                'Section 9. Compliance Mechanism. Every covered government office shall submit an annual certified compliance report to the Civil Service Commission, Commission on Audit, and appropriate oversight bodies. False statements or concealment shall constitute administrative dishonesty and shall be dealt with under civil service and applicable disciplinary rules.',
+                'Section 10. Administrative Consequences. For willful and unjustified non-compliance by covered personnel, agencies shall impose graduated administrative sanctions, including written reprimand for first offense, suspension for second offense, and grounds for dismissal for repeated offenses, subject to due process.',
+                'Section 11. Public School Capacity Support. To avoid overcrowding, the Department of Education, Department of Budget and Management, and local government units shall provide annual classroom, teacher, and learning-resource augmentation in covered areas before each expansion phase.',
+                'Section 12. Implementing Rules and Regulations. Within one hundred twenty (120) days from effectivity, the Department of Education, Civil Service Commission, Department of the Interior and Local Government, and Department of Budget and Management shall promulgate the implementing rules and establish a fair exemption review process.',
+                'Section 13. Separability Clause. If any provision of this Act is declared invalid or unconstitutional, the remaining provisions shall remain in full force and effect.',
+                'Section 14. Repealing Clause. All laws, decrees, rules, and regulations inconsistent with this Act are hereby repealed, amended, or modified accordingly.',
+                'Section 15. Effectivity. This Act shall take effect fifteen (15) days after publication in the Official Gazette or in at least two (2) newspapers of general circulation.'
               ]
             }
           ]

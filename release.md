@@ -1,6 +1,9 @@
 # Release Notes
 
 ## 2026-04-27
+Fixed persistent navbar/logo resizing by stabilizing vertical scrollbar behavior and preventing brand/logo flex shrink across route changes. Replaced the draft public-school enrollment proposal with a fuller, implementation-ready bill structure aligned with Philippine education, child-protection, and data-privacy legal anchors.
+
+## 2026-04-27
 Redesigned the landing page into a polished, modern experience that clearly explains Billy Bill AI as an AI-assisted, community-sourced bill creation platform. Added structured sections describing what a bill is, how AI drafting works, and how community suggestions help drive legislative ideas.
 
 ## 2026-04-27
@@ -11,4 +14,3 @@ Moved branding files into an `assets` folder, updated favicon/logo usage across 
 
 ## 2026-04-27
 Stabilized the navigation bar with a consistent height and applied a gradient background aligned to the site palette so it no longer shifts between pages. Rewrote the law-enforcer accountability bill into a full professional draft with formal sections and references to applicable Philippine laws.
-
