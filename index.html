@@ -1,10 +1,189 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Hello World</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Billy Bill AI | AI-Assisted Community-Sourced Bills</title>
+  <style>
+    :root {
+      --bg: #070b1a;
+      --card: rgba(18, 25, 55, 0.68);
+      --text: #eaf1ff;
+      --muted: #b8c5eb;
+      --primary: #7aa2ff;
+      --secondary: #5ef0d6;
+      --accent: #b88cff;
+      --border: rgba(255, 255, 255, 0.16);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 14%, rgba(122, 162, 255, 0.24), transparent 36%),
+        radial-gradient(circle at 88% 18%, rgba(184, 140, 255, 0.2), transparent 38%),
+        radial-gradient(circle at 20% 88%, rgba(94, 240, 214, 0.16), transparent 34%),
+        linear-gradient(160deg, #050812, #0d1433 52%, #121d46);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .layout {
+      width: min(1080px, 100%);
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: clamp(1.6rem, 3.8vw, 3rem);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(100deg, rgba(255,255,255,0.08), transparent 45%);
+    }
+
+    .badge {
+      display: inline-block;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #021834;
+      background: linear-gradient(90deg, var(--secondary), #82ffd8);
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 3.3rem);
+      line-height: 1.15;
+      margin-bottom: 0.9rem;
+      max-width: 18ch;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(1rem, 2.4vw, 1.15rem);
+      max-width: 65ch;
+      margin-bottom: 1.3rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #071029;
+      background: linear-gradient(100deg, var(--primary), #a0beff);
+      border-radius: 12px;
+      padding: 0.75rem 1.1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 25px rgba(122, 162, 255, 0.3);
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(122, 162, 255, 0.4);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+      color: #d9e6ff;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    footer {
+      color: #a7b3d4;
+      text-align: center;
+      margin-top: 0.25rem;
+      font-size: 0.92rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello World from GitHub Pages!</h1>
-  <p>My first static website for Billy.</p>
+  <main class="layout">
+    <section class="hero">
+      <span class="badge">Billy Bill AI</span>
+      <h1>An AI-assisted, community-sourced way to build better bills.</h1>
+      <p class="lead">
+        Billy Bill AI helps people draft legislation together. AI turns ideas into structured bill language,
+        while the community reviews, suggests changes, and drives each proposal toward real-world impact.
+      </p>
+      <a class="cta" href="#" aria-label="Start drafting a bill">Start drafting a bill →</a>
+    </section>
+
+    <section class="grid" aria-label="How Billy Bill AI works">
+      <article class="card">
+        <h2>What is a bill?</h2>
+        <p>
+          A bill is a proposal or draft of a law introduced in a legislature. It is law in the making,
+          moving through readings, debates, and committee reviews before it can become law.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>AI-powered drafting</h2>
+        <p>
+          Describe a problem in plain language and let AI generate a clear first draft with sections,
+          policy goals, and implementation details to accelerate legislative work.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Community-sourced ideas</h2>
+        <p>
+          Citizens, advocates, and experts can suggest edits, submit supporting arguments,
+          and vote on priorities so bills reflect real needs from the ground up.
+        </p>
+      </article>
+    </section>
+
+    <footer>
+      Built for collaborative lawmaking — where AI + people shape the next generation of policy.
+    </footer>
+  </main>
 </body>
 </html>
