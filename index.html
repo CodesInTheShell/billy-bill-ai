@@ -13,7 +13,6 @@
       --muted: #435776;
       --primary: #2f62d8;
       --secondary: #1f9d87;
-      --accent: #6f43d6;
       --border: #d3def3;
       --shadow: 0 14px 34px rgba(39, 68, 120, 0.12);
     }
@@ -54,6 +53,7 @@
       border-radius: 16px;
       padding: 0.85rem 1.05rem;
       box-shadow: var(--shadow);
+      flex-wrap: wrap;
     }
 
     .brand {
@@ -76,8 +76,10 @@
       font-weight: 600;
       border-radius: 10px;
       padding: 0.45rem 0.75rem;
+      cursor: pointer;
     }
 
+    .nav-link.active,
     .nav-link:hover,
     .nav-link:focus-visible {
       border-color: #b8cbef;
@@ -85,9 +87,7 @@
       outline: none;
     }
 
-    .hero,
-    .grid,
-    .bills {
+    .page {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 22px;
@@ -115,6 +115,11 @@
       max-width: 20ch;
     }
 
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.85rem;
+    }
+
     .lead {
       color: var(--muted);
       font-size: clamp(1rem, 2.2vw, 1.1rem);
@@ -130,12 +135,14 @@
       border-radius: 10px;
       max-width: 78ch;
       font-size: 0.95rem;
+      margin-bottom: 1rem;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
+      margin-top: 0.8rem;
     }
 
     .card {
@@ -145,25 +152,16 @@
       background: #fbfdff;
     }
 
-    .card h2 {
+    .card h3 {
       font-size: 1.05rem;
       margin-bottom: 0.35rem;
       color: #1b3663;
     }
 
-    .card p {
+    .card p,
+    .muted {
       color: var(--muted);
       font-size: 0.95rem;
-    }
-
-    .bills h2 {
-      margin-bottom: 0.75rem;
-      font-size: 1.4rem;
-    }
-
-    .bills p {
-      color: var(--muted);
-      margin-bottom: 0.75rem;
     }
 
     .query-wrap {
@@ -176,7 +174,7 @@
       margin-bottom: 0.35rem;
     }
 
-    #billQuery {
+    .bill-query {
       width: min(520px, 100%);
       border: 1px solid #bdd0f1;
       border-radius: 10px;
@@ -186,7 +184,7 @@
       background: #fff;
     }
 
-    #billQuery:focus-visible {
+    .bill-query:focus-visible {
       outline: 2px solid rgba(47, 98, 216, 0.35);
       border-color: #769fe7;
     }
@@ -204,17 +202,30 @@
       background: #fcfdff;
     }
 
-    .bill-item h3 {
-      font-size: 1.03rem;
-      color: #15345f;
+    .bill-title-link {
+      display: inline-block;
       margin-bottom: 0.35rem;
+      color: #15345f;
+      font-size: 1.03rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .bill-title-link:hover,
+    .bill-title-link:focus-visible {
+      text-decoration: underline;
+      color: var(--primary);
     }
 
     .empty-state {
       color: #7b8da9;
       font-style: italic;
       padding: 0.35rem 0;
-      display: none;
+    }
+
+    .bill-content {
+      display: grid;
+      gap: 0.9rem;
     }
 
     footer {
@@ -226,16 +237,32 @@
   </style>
 </head>
 <body>
-  <main class="layout">
+  <main id="app" class="layout">
     <nav class="top-nav" aria-label="Main navigation">
       <div class="brand">Billy Bill AI</div>
       <div class="nav-links">
-        <a class="nav-link" href="#home">Home</a>
-        <a class="nav-link" href="#bills">Bills</a>
+        <a
+          href="#/"
+          class="nav-link"
+          :class="{ active: currentPage === 'landing' }"
+          @click="goToPage('landing')"
+        >Landing</a>
+        <a
+          href="#/bills"
+          class="nav-link"
+          :class="{ active: currentPage === 'bills' }"
+          @click="goToPage('bills')"
+        >All Bills</a>
+        <a
+          href="#/bill"
+          class="nav-link"
+          :class="{ active: currentPage === 'bill' }"
+          @click="goToBill(selectedBillId)"
+        >Specific Bill</a>
       </div>
     </nav>
 
-    <section class="hero" id="home">
+    <section v-if="currentPage === 'landing'" class="page" id="landing">
       <span class="badge">Billy Bill AI</span>
       <h1>An AI-assisted, community-sourced way to build better bills.</h1>
       <p class="lead">
@@ -246,58 +273,56 @@
         Proof of concept only: this is a social testing website/app for the idea that AI and the community can
         work together to craft better bills — bills by the people, for the people.
       </p>
+
+      <section class="grid" aria-label="How Billy Bill AI works">
+        <article class="card">
+          <h3>What is a bill?</h3>
+          <p>A bill is a draft of a proposed law introduced for review, debate, and approval.</p>
+        </article>
+        <article class="card">
+          <h3>AI-powered drafting</h3>
+          <p>Describe a problem in plain language and AI can produce a first legal draft quickly.</p>
+        </article>
+        <article class="card">
+          <h3>Community-sourced ideas</h3>
+          <p>People review, suggest edits, and improve bills so they reflect public priorities.</p>
+        </article>
+      </section>
     </section>
 
-    <section class="grid" aria-label="How Billy Bill AI works">
-      <article class="card">
-        <h2>What is a bill?</h2>
-        <p>
-          A bill is a proposal or draft of a law introduced in a legislature. It is law in the making,
-          moving through readings, debates, and committee reviews before it can become law.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>AI-powered drafting</h2>
-        <p>
-          Describe a problem in plain language and let AI generate a clear first draft with sections,
-          policy goals, and implementation details to accelerate legislative work.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>Community-sourced ideas</h2>
-        <p>
-          Citizens, advocates, and experts can suggest edits, submit supporting arguments,
-          and vote on priorities so bills reflect real needs from the ground up.
-        </p>
-      </article>
-    </section>
-
-    <section class="bills" id="bills" aria-label="Bills list">
-      <h2>Draft Bills</h2>
-      <p>Browse current draft bill titles and filter the list with a query.</p>
+    <section v-if="currentPage === 'bills'" class="page" id="bills" aria-label="Bills list">
+      <h2>All Draft Bills</h2>
+      <p class="muted">Browse current bill titles and filter with a search query.</p>
       <div class="query-wrap">
         <label for="billQuery">Search bill titles</label>
-        <input id="billQuery" type="search" placeholder="Type a keyword like law enforcers or public school" />
+        <input
+          id="billQuery"
+          class="bill-query"
+          type="search"
+          v-model.trim="query"
+          placeholder="Type a keyword like law enforcers or public school"
+        />
       </div>
-      <ul class="bill-list" id="billList">
-        <li class="bill-item" data-title="Double penalties for crimes committed by law enforcers or LEA personnel">
-          <h3>Double penalties for crimes committed by law enforcers or LEA personnel</h3>
-          <p>
-            This draft proposes that when a law enforcer or LEA personnel commits a crime, punishment should be
-            doubled (for example, a 2-year theft sentence would become 4 years) due to their training and duty.
-          </p>
-        </li>
-        <li class="bill-item" data-title="Mandatory public school enrollment for children of government workers and officials">
-          <h3>Mandatory public school enrollment for children of government workers and officials</h3>
-          <p>
-            This draft requires public or government employees, including elected officials, to enroll their
-            children in public schools.
-          </p>
+
+      <ul class="bill-list">
+        <li v-for="bill in filteredBills" :key="bill.id" class="bill-item">
+          <a class="bill-title-link" :href="`#/bill/${bill.id}`" @click="goToBill(bill.id)">{{ bill.title }}</a>
+          <p class="muted">{{ bill.summary }}</p>
         </li>
       </ul>
-      <p class="empty-state" id="emptyState">No bill titles match your search.</p>
+
+      <p v-if="filteredBills.length === 0" class="empty-state">No bill titles match your search.</p>
+    </section>
+
+    <section v-if="currentPage === 'bill'" class="page" id="bill" aria-label="Specific bill page">
+      <h2>{{ selectedBill.title }}</h2>
+      <p class="muted">{{ selectedBill.summary }}</p>
+
+      <div class="bill-content">
+        <article class="card" v-for="(paragraph, idx) in selectedBill.content" :key="idx">
+          <p>{{ paragraph }}</p>
+        </article>
+      </div>
     </section>
 
     <footer>
@@ -305,24 +330,99 @@
     </footer>
   </main>
 
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script>
-    const queryInput = document.getElementById('billQuery');
-    const billItems = [...document.querySelectorAll('.bill-item')];
-    const emptyState = document.getElementById('emptyState');
+    const { createApp } = Vue;
 
-    queryInput.addEventListener('input', () => {
-      const query = queryInput.value.trim().toLowerCase();
-      let visibleCount = 0;
+    createApp({
+      data() {
+        return {
+          currentPage: 'landing',
+          query: '',
+          selectedBillId: 'double-penalty-law-enforcers',
+          bills: [
+            {
+              id: 'double-penalty-law-enforcers',
+              title: 'Double penalties for crimes committed by law enforcers or LEA personnel',
+              summary: 'Increase criminal penalties when law enforcers abuse authority and commit crimes.',
+              content: [
+                'Section 1. Policy. This bill reinforces accountability by applying enhanced penalties when crimes are committed by law enforcers or law enforcement agency personnel while on duty or by misuse of office.',
+                'Section 2. Coverage. Any crime under existing penal laws, special laws, or local ordinances shall carry a penalty multiplier of two (2x) when the offender is a law enforcer acting under official authority.',
+                'Section 3. Aggravating Circumstances. Abuse of state-issued equipment, intimidation of witnesses, or concealment of evidence shall require immediate suspension and expedited case processing.',
+                'Section 4. Implementation. The Department of Justice and internal affairs units shall publish annual reports on filed cases, convictions, and disciplinary outcomes under this law.'
+              ]
+            },
+            {
+              id: 'public-school-enrollment-officials',
+              title: 'Mandatory public school enrollment for children of government workers and officials',
+              summary: 'Require children of public officials and employees to enroll in public schools, with limited exceptions.',
+              content: [
+                'Section 1. Policy. Public education quality should be a shared responsibility; this bill aligns decision-makers with the outcomes of the public school system they govern and fund.',
+                'Section 2. Requirement. Children of elected officials and full-time government employees shall be enrolled in accredited public schools from elementary through secondary level.',
+                'Section 3. Exceptions. Limited exceptions are allowed for verified special education needs, geographic inaccessibility, or safety circumstances validated by an independent review board.',
+                'Section 4. Compliance. Agencies shall submit annual compliance disclosures; repeated non-compliance may trigger administrative sanctions and public reporting requirements.'
+              ]
+            }
+          ]
+        };
+      },
+      computed: {
+        filteredBills() {
+          const normalized = this.query.toLowerCase();
+          if (!normalized) return this.bills;
 
-      billItems.forEach((item) => {
-        const title = item.dataset.title.toLowerCase();
-        const isVisible = title.includes(query);
-        item.style.display = isVisible ? 'block' : 'none';
-        if (isVisible) visibleCount += 1;
-      });
+          return this.bills.filter((bill) => {
+            return bill.title.toLowerCase().includes(normalized);
+          });
+        },
+        selectedBill() {
+          return this.bills.find((bill) => bill.id === this.selectedBillId) || this.bills[0];
+        }
+      },
+      methods: {
+        goToPage(page) {
+          this.currentPage = page;
+          if (page === 'landing') window.location.hash = '#/';
+          if (page === 'bills') window.location.hash = '#/bills';
+          if (page === 'bill') window.location.hash = `#/bill/${this.selectedBillId}`;
+        },
+        goToBill(billId) {
+          this.selectedBillId = billId;
+          this.currentPage = 'bill';
+          window.location.hash = `#/bill/${billId}`;
+        },
+        syncRoute() {
+          const hash = window.location.hash || '#/';
+          const [route, routeId] = hash.replace('#/', '').split('/');
 
-      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
-    });
+          if (hash === '#/' || hash === '') {
+            this.currentPage = 'landing';
+            return;
+          }
+
+          if (hash === '#/bills') {
+            this.currentPage = 'bills';
+            return;
+          }
+
+          if (route === 'bill') {
+            const found = this.bills.find((bill) => bill.id === routeId);
+            this.selectedBillId = found ? found.id : this.bills[0].id;
+            this.currentPage = 'bill';
+            return;
+          }
+
+          this.currentPage = 'landing';
+        }
+      },
+      mounted() {
+        this.syncRoute();
+        window.addEventListener('hashchange', this.syncRoute);
+      },
+      beforeUnmount() {
+        window.removeEventListener('hashchange', this.syncRoute);
+      }
+    }).mount('#app');
   </script>
 </body>
 </html>
