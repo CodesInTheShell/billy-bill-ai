@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2026-04-28
+Reviewed the two draft bills from a neutral third-party perspective and tightened provisions that needed clearer due process, definitions, and measurable accountability reporting. Expanded the education bill to explicitly cover public education pathways from Kindergarten through tertiary level while aligning exceptions and implementation with current Philippine education agencies and laws.
+
 ## 2026-04-27
 Fixed persistent navbar/logo resizing by stabilizing vertical scrollbar behavior and preventing brand/logo flex shrink across route changes. Replaced the draft public-school enrollment proposal with a fuller, implementation-ready bill structure aligned with Philippine education, child-protection, and data-privacy legal anchors.
 
