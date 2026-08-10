@@ -1,6 +1,9 @@
 # Release Notes
 
 ## 2026-08-10
+Reframed the app and its draft documents as community-driven legislative proposals or policy drafts, with proposal metadata, rationale, draft policy provisions, and an explicit community-review section instead of an official filed-bill presentation.
+
+## 2026-08-10
 Added the Responsible Self-Defense Tools Act, a draft framework legalizing the regulated carry of specified non-bladed defensive tools while requiring safety training, restricting carry in sensitive places, and penalizing misuse.
 
 ## 2026-08-02

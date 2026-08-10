@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Billy Bill AI | AI-Assisted Community-Sourced Bills</title>
+  <title>Billy Bill AI | Community Legislative Proposals</title>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <style>
     :root {
@@ -270,32 +270,43 @@
       line-height: 1.5;
     }
 
-    .bill-heading,
-    .bill-number,
-    .bill-enacting-clause {
-      text-align: center;
+    .proposal-heading {
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid #111;
     }
 
-    .bill-heading p {
-      margin: 0;
-    }
-
-    .bill-heading .chamber {
-      margin-top: 0.4rem;
-      font-size: 1.12rem;
-      font-weight: 700;
+    .proposal-kicker {
+      margin-bottom: 0.45rem;
+      font-family: Inter, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .bill-number {
-      margin: 2.2rem 0 1.2rem;
-      font-size: 1.08rem;
-      font-weight: 700;
+    .proposal-heading h3 {
+      font-size: clamp(1.45rem, 4vw, 2rem);
+      line-height: 1.2;
     }
 
-    .bill-sponsor {
-      text-align: center;
-      font-size: 0.95rem;
+    .proposal-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 0.8rem;
+      margin: 1.1rem 0 1.6rem;
+      padding: 0.9rem;
+      background: #f3f3f3;
+      font-family: Inter, "Segoe UI", sans-serif;
+      font-size: 0.86rem;
+    }
+
+    .proposal-meta dt {
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .proposal-meta dd {
+      margin-top: 0.12rem;
     }
 
     .bill-divider {
@@ -305,43 +316,20 @@
       border-top: 1px solid #111;
     }
 
-    .explanatory-note h3,
-    .bill-proper h3 {
+    .proposal-section h4 {
       margin-bottom: 1rem;
-      text-align: center;
       font-size: 1rem;
       text-transform: uppercase;
     }
 
-    .explanatory-note p,
+    .proposal-section p,
     .bill-section {
       margin-bottom: 0.85rem;
       text-align: justify;
-      text-indent: 2rem;
     }
 
-    .bill-proper {
-      break-before: page;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px dashed #aaa;
-    }
-
-    .bill-proper .bill-number {
-      margin-top: 1.5rem;
-    }
-
-    .bill-long-title {
-      margin: 1.2rem auto;
-      max-width: 64ch;
-      text-align: center;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .bill-enacting-clause {
-      margin: 1.4rem 0;
-      font-style: italic;
+    .proposal-section {
+      margin-top: 1.8rem;
     }
 
     .bill-content {
@@ -354,10 +342,7 @@
         padding: 1.25rem 1rem;
       }
 
-      .explanatory-note p,
-      .bill-section {
-        text-indent: 1.25rem;
-      }
+      .proposal-meta { grid-template-columns: 1fr 1fr; }
     }
 
     @media print {
@@ -402,7 +387,7 @@
           class="nav-link"
           :class="{ active: currentPage === 'bills' || currentPage === 'bill' }"
           @click="goToPage('bills')"
-        >Bills</a>
+        >Proposals</a>
         <a
           href="#/about"
           class="nav-link"
@@ -414,37 +399,38 @@
 
     <section v-if="currentPage === 'landing'" class="page" id="landing">
       <span class="badge">Billy Bill AI</span>
-      <h1>An AI-assisted, community-sourced way to build better bills.</h1>
+      <h1>A community-driven way to shape legislative proposals.</h1>
       <p class="lead">
-        Billy Bill AI helps people draft legislation together. AI turns ideas into structured bill language,
-        while the community reviews, suggests changes, and drives each proposal toward real-world impact.
+        Billy Bill AI helps people turn shared concerns into structured legislative proposals and policy drafts.
+        AI assists with organization and language while the community reviews assumptions, suggests changes,
+        and improves each proposal before it is ever considered formal legislation.
       </p>
       <p class="poc-note">
         Proof of concept only: this is a social testing website/app for the idea that AI and the community can
-        work together to craft better bills — bills by the people, for the people.
+        work together to develop better public policy. Published drafts are community proposals, not introduced bills or enacted law.
       </p>
 
       <section class="grid" aria-label="How Billy Bill AI works">
         <article class="card">
-          <h3>What is a bill?</h3>
-          <p>A bill is a draft of a proposed law introduced for review, debate, and approval.</p>
+          <h3>Start with a policy need</h3>
+          <p>Community members identify a public problem, the people affected, and the outcome a proposal should pursue.</p>
         </article>
         <article class="card">
           <h3>AI-powered drafting</h3>
-          <p>Describe a problem in plain language and AI can produce a first legal draft quickly.</p>
+          <p>AI helps organize public ideas into a clear rationale, policy approach, and set of draft provisions.</p>
         </article>
         <article class="card">
           <h3>Community-sourced ideas</h3>
-          <p>People review, suggest edits, and improve bills so they reflect public priorities.</p>
+          <p>People challenge assumptions, suggest edits, and improve proposals so they better reflect public priorities.</p>
         </article>
       </section>
     </section>
 
-    <section v-if="currentPage === 'bills'" class="page" id="bills" aria-label="Bills list">
-      <h2>All Draft Bills</h2>
-      <p class="muted">Browse current bill titles and filter with a search query.</p>
+    <section v-if="currentPage === 'bills'" class="page" id="bills" aria-label="Legislative proposals list">
+      <h2>Community Legislative Proposals</h2>
+      <p class="muted">Browse policy drafts currently open for community review.</p>
       <div class="query-wrap">
-        <label for="billQuery">Search bill titles</label>
+        <label for="billQuery">Search proposal titles</label>
         <input
           id="billQuery"
           class="bill-query"
@@ -461,7 +447,7 @@
         </li>
       </ul>
 
-      <p v-if="filteredBills.length === 0" class="empty-state">No bill titles match your search.</p>
+      <p v-if="filteredBills.length === 0" class="empty-state">No proposal titles match your search.</p>
     </section>
 
 
@@ -469,53 +455,60 @@
     <section v-if="currentPage === 'about'" class="page" id="about" aria-label="About Billy Bill AI">
       <h2>About Billy Bill AI</h2>
       <p class="lead">
-        Billy Bill AI is a proof-of-concept civic platform where people can draft policy ideas and review AI-assisted bill text in one place.
+        Billy Bill AI is a proof-of-concept civic platform where people collaboratively develop policy ideas and review AI-assisted legislative proposals in one place.
       </p>
       <p class="muted">
-        The goal is to make legislative thinking easier to understand, easier to discuss, and more community-driven through transparent bill summaries and collaborative iteration.
+        The goal is to make policy development easier to understand, discuss, and improve. Every item is presented as a community-authored proposal or policy draft—not as an officially filed bill.
       </p>
     </section>
-    <section v-if="currentPage === 'bill'" class="page" id="bill" aria-label="Specific bill page">
+    <section v-if="currentPage === 'bill'" class="page" id="bill" aria-label="Specific legislative proposal page">
       <h2>{{ selectedBill.title }}</h2>
       <p class="muted">{{ selectedBill.summary }}</p>
 
-      <article class="legislative-document" aria-label="Philippine legislative bill draft">
-        <header class="bill-heading">
-          <p>Republic of the Philippines</p>
-          <p class="chamber">{{ selectedBill.chamber }}</p>
-          <p>{{ selectedBill.congress }}</p>
-          <p>{{ selectedBill.session }}</p>
-          <p>Manila</p>
+      <article class="legislative-document" aria-label="Community legislative proposal">
+        <header class="proposal-heading">
+          <p class="proposal-kicker">Community Legislative Proposal / Policy Draft</p>
+          <h3>{{ selectedBill.title }}</h3>
         </header>
 
-        <p class="bill-number">{{ selectedBill.billNumber }}</p>
-        <p class="bill-sponsor">Introduced by {{ selectedBill.introducedBy }}</p>
-        <hr class="bill-divider" />
+        <dl class="proposal-meta">
+          <div><dt>Status</dt><dd>Open for community review</dd></div>
+          <div><dt>Document type</dt><dd>Legislative proposal</dd></div>
+          <div><dt>Jurisdiction</dt><dd>Philippines</dd></div>
+          <div><dt>Authorship</dt><dd>Community-sourced, AI-assisted</dd></div>
+        </dl>
 
-        <section class="explanatory-note">
-          <h3>Explanatory Note</h3>
+        <section class="proposal-section">
+          <h4>1. Proposal Summary</h4>
+          <p>{{ selectedBill.summary }}</p>
+        </section>
+
+        <section class="proposal-section">
+          <h4>2. Rationale and Public Interest</h4>
           <p v-for="(paragraph, idx) in selectedBill.explanatoryNote" :key="`note-${idx}`">{{ paragraph }}</p>
         </section>
 
-        <section class="bill-proper">
-          <header class="bill-heading">
-            <p class="chamber">{{ selectedBill.chamber }}</p>
-            <p>{{ selectedBill.congress }}</p>
-            <p>{{ selectedBill.session }}</p>
-          </header>
-          <p class="bill-number">{{ selectedBill.billNumber }}</p>
-          <p class="bill-long-title">An Act {{ selectedBill.longTitle }}</p>
-          <p class="bill-enacting-clause">Be it enacted by the Senate and House of Representatives of the Philippines in Congress assembled:</p>
+        <section class="proposal-section">
+          <h4>3. Proposed Legislative Approach</h4>
+          <p>This policy draft proposes an act {{ selectedBill.longTitle.toLowerCase() }}.</p>
+        </section>
 
+        <section class="proposal-section">
+          <h4>4. Draft Policy Provisions</h4>
           <div class="bill-content">
             <p class="bill-section" v-for="(paragraph, idx) in selectedBill.content" :key="idx">{{ paragraph }}</p>
           </div>
+        </section>
+
+        <section class="proposal-section">
+          <h4>5. Community Review</h4>
+          <p>This working draft is open to public critique. Reviewers are encouraged to identify affected groups, implementation risks, unintended consequences, missing safeguards, and measurable ways to evaluate results.</p>
         </section>
       </article>
     </section>
 
     <footer>
-      Built for collaborative lawmaking — where AI + people shape the next generation of policy.
+      Built for collaborative policymaking — community proposals shaped by people, with help from AI.
     </footer>
   </main>
 
@@ -534,17 +527,12 @@
               id: 'responsible-self-defense-tools',
               title: 'Responsible Self-Defense Tools Act',
               summary: 'Allows qualified adults to carry specified non-bladed defensive tools, subject to training, safe-carry rules, prohibited places, and strict penalties for misuse.',
-              chamber: 'Senate',
-              congress: 'Twentieth Congress',
-              session: 'First Regular Session',
-              billNumber: 'S. No. ____',
-              introducedBy: '____________________________',
               longTitle: 'Recognizing the Right of Qualified Adults to Possess and Carry Regulated Non-Bladed Defensive Tools, Establishing Training, Safety, and Accountability Standards, Penalizing Misuse, and for Other Purposes',
               explanatoryNote: [
                 'The State has the duty to protect every person, yet law enforcement and emergency assistance cannot be present at every moment or in every place. A person confronted by an imminent unlawful attack may have no safe avenue of escape and should have access to reasonable, non-lethal means of defense while awaiting help.',
                 'Filipino martial traditions, including arnis, demonstrate that impact tools may be used with discipline and restraint. This measure creates a narrow and regulated framework under which qualified adults may carry specified non-bladed defensive tools, including arnis sticks, collapsible or fixed batons, and nunchaku, while requiring safety training and preserving strict consequences for intimidation, reckless display, or criminal misuse.',
-                'The bill balances personal security with public safety through age and disqualification rules, prohibited-place restrictions, standards for transport and carry, de-escalation instruction, and uniform implementation. It does not authorize aggression, vigilantism, or force beyond what is lawful and reasonably necessary.',
-                'In view of the foregoing, the immediate passage of this bill is earnestly sought.'
+                'The proposal balances personal security with public safety through age and disqualification rules, prohibited-place restrictions, standards for transport and carry, de-escalation instruction, and uniform implementation. It does not authorize aggression, vigilantism, or force beyond what is lawful and reasonably necessary.',
+                'Community review is invited to test these policy choices, identify unintended consequences, and strengthen the draft before any formal legislative action is pursued.'
               ],
               content: [
                 'Section 1. Short Title. This Act shall be known as the Responsible Self-Defense Tools Act.',
@@ -572,16 +560,11 @@
               id: 'double-penalty-law-enforcers',
               title: 'Public Trust and Law Enforcement Accountability Act',
               summary: 'Imposes enhanced penalties for crimes committed through official authority, with clearer due-process safeguards, command accountability, and victim-focused reporting.',
-              chamber: 'Senate',
-              congress: 'Twentieth Congress',
-              session: 'First Regular Session',
-              billNumber: 'S. No. ____',
-              introducedBy: '____________________________',
               longTitle: 'Imposing Enhanced Penalties for Crimes Committed by Law Enforcement Officers Through the Use or Abuse of Official Authority, Establishing Safeguards and Accountability Measures, and for Other Purposes',
               explanatoryNote: [
                 'Public office is a public trust. Law enforcement officers are entrusted with exceptional authority, government resources, and custody over persons; the misuse of that trust to commit a crime causes particular harm to victims and weakens confidence in public institutions.',
                 'This measure seeks to impose an enhanced penal consequence when official authority facilitates an offense, while preserving constitutional due process and liabilities under existing laws. It also strengthens command accountability, victim and witness protection, and public reporting.',
-                'In view of the foregoing, the immediate passage of this bill is earnestly sought.'
+                'Community review is invited to test these policy choices, identify unintended consequences, and strengthen the draft before any formal legislative action is pursued.'
               ],
               content: [
                 'Section 1. Short Title. This Act shall be known as the Public Trust and Law Enforcement Accountability Act.',
@@ -603,16 +586,11 @@
               id: 'public-school-enrollment-officials',
               title: 'Public Education Solidarity and Accountability Act',
               summary: 'Requires covered government personnel to prioritize public education from Kindergarten through college in DepEd schools, SUCs/LUCs, or state TVIs, with rights-based exceptions and phased implementation.',
-              chamber: 'Senate',
-              congress: 'Twentieth Congress',
-              session: 'First Regular Session',
-              billNumber: 'S. No. ____',
-              introducedBy: '____________________________',
               longTitle: 'Requiring Covered Public Officials and Government Personnel to Enroll Their Qualified Dependents in Public Education Institutions, Providing Reasonable Exceptions and Capacity Safeguards, and for Other Purposes',
               explanatoryNote: [
                 'The Constitution directs the State to protect and promote the right of all citizens to quality education at all levels. Public servants who share a direct stake in public schools can help focus government attention on their quality, accessibility, and resources.',
                 'This measure establishes a phased public-enrollment policy for qualified dependents of covered government personnel. It includes exceptions based on disability support, access, safety, and program availability, while protecting children from discrimination and safeguarding personal data.',
-                'In view of the foregoing, the immediate passage of this bill is earnestly sought.'
+                'Community review is invited to test these policy choices, identify unintended consequences, and strengthen the draft before any formal legislative action is pursued.'
               ],
               content: [
                 'Section 1. Short Title. This Act shall be known as the Public Education Solidarity and Accountability Act.',
