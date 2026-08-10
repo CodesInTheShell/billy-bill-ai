@@ -1,6 +1,9 @@
 # Release Notes
 
 ## 2026-08-10
+Restored each proposal's formal, high-level description above its green plain-language summary while removing the "In simple English" label so both descriptions appear without redundant headings.
+
+## 2026-08-10
 Added short, plain-English descriptions to every proposal and made them prominent in proposal lists and detail pages. Expanded the law enforcement accountability proposal to protect safe public recording and address officers who unlawfully stop recordings, seize or damage devices, or alter footage.
 
 ## 2026-08-10
