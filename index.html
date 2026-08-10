@@ -263,10 +263,10 @@
       line-height: 1.55;
     }
 
-    .simple-summary strong {
-      display: block;
-      margin-bottom: 0.15rem;
-      color: #123b34;
+    .formal-summary {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      line-height: 1.55;
     }
 
     .empty-state {
@@ -460,7 +460,8 @@
       <ul class="bill-list">
         <li v-for="bill in filteredBills" :key="bill.id" class="bill-item">
           <a class="bill-title-link" :href="`#/bill/${bill.id}`" @click="goToBill(bill.id)">{{ bill.title }}</a>
-          <p class="simple-summary"><strong>In simple English</strong>{{ bill.simpleDescription }}</p>
+          <p class="formal-summary">{{ bill.summary }}</p>
+          <p class="simple-summary">{{ bill.simpleDescription }}</p>
         </li>
       </ul>
 
@@ -480,7 +481,8 @@
     </section>
     <section v-if="currentPage === 'bill'" class="page" id="bill" aria-label="Specific legislative proposal page">
       <h2>{{ selectedBill.title }}</h2>
-      <p class="simple-summary"><strong>In simple English</strong>{{ selectedBill.simpleDescription }}</p>
+      <p class="formal-summary">{{ selectedBill.summary }}</p>
+      <p class="simple-summary">{{ selectedBill.simpleDescription }}</p>
 
       <article class="legislative-document" aria-label="Community legislative proposal">
         <header class="proposal-heading">
