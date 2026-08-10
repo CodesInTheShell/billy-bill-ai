@@ -252,6 +252,23 @@
       color: var(--primary);
     }
 
+    .simple-summary {
+      margin-top: 0.45rem;
+      padding: 0.75rem 0.85rem;
+      border-left: 4px solid var(--secondary);
+      border-radius: 8px;
+      background: #eefcf8;
+      color: #173f38;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .simple-summary strong {
+      display: block;
+      margin-bottom: 0.15rem;
+      color: #123b34;
+    }
+
     .empty-state {
       color: #7b8da9;
       font-style: italic;
@@ -443,7 +460,7 @@
       <ul class="bill-list">
         <li v-for="bill in filteredBills" :key="bill.id" class="bill-item">
           <a class="bill-title-link" :href="`#/bill/${bill.id}`" @click="goToBill(bill.id)">{{ bill.title }}</a>
-          <p class="muted">{{ bill.summary }}</p>
+          <p class="simple-summary"><strong>In simple English</strong>{{ bill.simpleDescription }}</p>
         </li>
       </ul>
 
@@ -463,7 +480,7 @@
     </section>
     <section v-if="currentPage === 'bill'" class="page" id="bill" aria-label="Specific legislative proposal page">
       <h2>{{ selectedBill.title }}</h2>
-      <p class="muted">{{ selectedBill.summary }}</p>
+      <p class="simple-summary"><strong>In simple English</strong>{{ selectedBill.simpleDescription }}</p>
 
       <article class="legislative-document" aria-label="Community legislative proposal">
         <header class="proposal-heading">
@@ -527,6 +544,7 @@
               id: 'responsible-self-defense-tools',
               title: 'Responsible Self-Defense Tools Act',
               summary: 'Allows qualified adults to carry specified non-bladed defensive tools, subject to training, safe-carry rules, prohibited places, and strict penalties for misuse.',
+              simpleDescription: 'Adults who pass a short safety course may carry certain non-bladed tools, such as an arnis stick or baton, for self-defense. They must carry them safely and cannot use them to threaten people or bring them into prohibited places.',
               longTitle: 'Recognizing the Right of Qualified Adults to Possess and Carry Regulated Non-Bladed Defensive Tools, Establishing Training, Safety, and Accountability Standards, Penalizing Misuse, and for Other Purposes',
               explanatoryNote: [
                 'The State has the duty to protect every person, yet law enforcement and emergency assistance cannot be present at every moment or in every place. A person confronted by an imminent unlawful attack may have no safe avenue of escape and should have access to reasonable, non-lethal means of defense while awaiting help.',
@@ -560,6 +578,7 @@
               id: 'double-penalty-law-enforcers',
               title: 'Public Trust and Law Enforcement Accountability Act',
               summary: 'Imposes enhanced penalties for crimes committed through official authority, with clearer due-process safeguards, command accountability, and victim-focused reporting.',
+              simpleDescription: 'A law enforcement officer who uses their job or power to commit a crime will receive a heavier punishment. People may safely record officers at work, and an officer can be punished for unlawfully stopping a recording, taking or damaging a camera or phone, or deleting the recording.',
               longTitle: 'Imposing Enhanced Penalties for Crimes Committed by Law Enforcement Officers Through the Use or Abuse of Official Authority, Establishing Safeguards and Accountability Measures, and for Other Purposes',
               explanatoryNote: [
                 'Public office is a public trust. Law enforcement officers are entrusted with exceptional authority, government resources, and custody over persons; the misuse of that trust to commit a crime causes particular harm to victims and weakens confidence in public institutions.',
@@ -576,16 +595,18 @@
                 'Section 7. Command Responsibility and Administrative Action. Where substantial evidence shows that immediate superiors tolerated, concealed, or failed to report offenses under this Act, such superiors shall be subject to administrative investigation and, when warranted, criminal prosecution under applicable laws. Filing of criminal charges shall trigger preventive suspension pursuant to existing civil service and disciplinary rules, without prejudice to presumption of innocence in criminal proceedings.',
                 'Section 8. Witness and Victim Protection. Complainants, witnesses, and their immediate families in prosecutions under this Act shall be endorsed by the Department of Justice for assessment under the Witness Protection, Security and Benefit Program, subject to existing law and rules.',
                 'Section 9. Transparency and Reporting. The Department of Justice, in coordination with the Napolcom, PNP Internal Affairs Service, and other concerned agencies, shall publish an annual report on complaints filed, cases prosecuted, conviction rates, case disposition time, and administrative sanctions involving offenses covered by this Act, while observing data privacy and witness security safeguards.',
-                'Section 10. Implementing Rules and Regulations. Within ninety (90) days from effectivity, the Department of Justice, Department of the Interior and Local Government, Napolcom, Civil Service Commission, and Commission on Human Rights shall promulgate the implementing rules and regulations.',
-                'Section 11. Separability Clause. If any provision of this Act is declared unconstitutional or invalid, the remaining provisions not affected thereby shall remain in full force and effect.',
-                'Section 12. Repealing Clause. All laws, decrees, orders, rules, and regulations inconsistent with this Act are hereby repealed or modified accordingly.',
-                'Section 13. Effectivity. This Act shall take effect fifteen (15) days after publication in the Official Gazette or in at least two (2) newspapers of general circulation.'
+                'Section 10. Right to Record Law Enforcement Activity. Any person who is lawfully present may photograph or make an audio or video recording of a law enforcement officer performing official duties in a public place, provided that the person does not physically interfere with the operation or cross a lawful safety perimeter. An officer shall not order a person to stop recording, seize or damage a recording device, or view, copy, alter, or delete a recording without the owner’s voluntary consent, a lawful warrant, or a clearly applicable exception to the warrant requirement. An officer who knowingly violates this section shall be subject to administrative sanctions and, when the act constitutes a crime under existing law, prosecution with the higher penal consequence under Section 4. Any device temporarily secured because of an immediate safety need shall be returned as soon as that need ends, and its contents shall not be accessed or altered without lawful authority.',
+                'Section 11. Implementing Rules and Regulations. Within ninety (90) days from effectivity, the Department of Justice, Department of the Interior and Local Government, Napolcom, Civil Service Commission, and Commission on Human Rights shall promulgate the implementing rules and regulations.',
+                'Section 12. Separability Clause. If any provision of this Act is declared unconstitutional or invalid, the remaining provisions not affected thereby shall remain in full force and effect.',
+                'Section 13. Repealing Clause. All laws, decrees, orders, rules, and regulations inconsistent with this Act are hereby repealed or modified accordingly.',
+                'Section 14. Effectivity. This Act shall take effect fifteen (15) days after publication in the Official Gazette or in at least two (2) newspapers of general circulation.'
               ]
             },
             {
               id: 'public-school-enrollment-officials',
               title: 'Public Education Solidarity and Accountability Act',
               summary: 'Requires covered government personnel to prioritize public education from Kindergarten through college in DepEd schools, SUCs/LUCs, or state TVIs, with rights-based exceptions and phased implementation.',
+              simpleDescription: 'Government workers and officials must generally enroll their children in public schools from Kindergarten through college. Exceptions are allowed when a child needs unavailable support, a suitable public school is too far away or unsafe, or the needed college program is not offered.',
               longTitle: 'Requiring Covered Public Officials and Government Personnel to Enroll Their Qualified Dependents in Public Education Institutions, Providing Reasonable Exceptions and Capacity Safeguards, and for Other Purposes',
               explanatoryNote: [
                 'The Constitution directs the State to protect and promote the right of all citizens to quality education at all levels. Public servants who share a direct stake in public schools can help focus government attention on their quality, accessibility, and resources.',

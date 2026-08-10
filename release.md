@@ -1,6 +1,9 @@
 # Release Notes
 
 ## 2026-08-10
+Added short, plain-English descriptions to every proposal and made them prominent in proposal lists and detail pages. Expanded the law enforcement accountability proposal to protect safe public recording and address officers who unlawfully stop recordings, seize or damage devices, or alter footage.
+
+## 2026-08-10
 Reframed the app and its draft documents as community-driven legislative proposals or policy drafts, with proposal metadata, rationale, draft policy provisions, and an explicit community-review section instead of an official filed-bill presentation.
 
 ## 2026-08-10
