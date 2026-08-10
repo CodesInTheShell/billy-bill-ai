@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2026-08-10
+Added the Responsible Self-Defense Tools Act, a draft framework legalizing the regulated carry of specified non-bladed defensive tools while requiring safety training, restricting carry in sensitive places, and penalizing misuse.
+
 ## 2026-08-02
 Reformatted bill detail pages to follow the customary Philippine Senate bill presentation, including legislative headers, bill and sponsor placeholders, an explanatory note, long title, enacting clause, numbered provisions, and print-friendly styling.
 
