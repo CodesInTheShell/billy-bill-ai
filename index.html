@@ -258,9 +258,127 @@
       padding: 0.35rem 0;
     }
 
+    .legislative-document {
+      width: min(780px, 100%);
+      margin: 1.4rem auto 0;
+      padding: clamp(1.4rem, 5vw, 3.5rem);
+      border: 1px solid #c8c8c8;
+      background: #fff;
+      color: #111;
+      box-shadow: 0 12px 30px rgba(19, 35, 61, 0.1);
+      font-family: "Times New Roman", Times, serif;
+      line-height: 1.5;
+    }
+
+    .bill-heading,
+    .bill-number,
+    .bill-enacting-clause {
+      text-align: center;
+    }
+
+    .bill-heading p {
+      margin: 0;
+    }
+
+    .bill-heading .chamber {
+      margin-top: 0.4rem;
+      font-size: 1.12rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .bill-number {
+      margin: 2.2rem 0 1.2rem;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .bill-sponsor {
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .bill-divider {
+      width: 42%;
+      margin: 1.5rem auto;
+      border: 0;
+      border-top: 1px solid #111;
+    }
+
+    .explanatory-note h3,
+    .bill-proper h3 {
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .explanatory-note p,
+    .bill-section {
+      margin-bottom: 0.85rem;
+      text-align: justify;
+      text-indent: 2rem;
+    }
+
+    .bill-proper {
+      break-before: page;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px dashed #aaa;
+    }
+
+    .bill-proper .bill-number {
+      margin-top: 1.5rem;
+    }
+
+    .bill-long-title {
+      margin: 1.2rem auto;
+      max-width: 64ch;
+      text-align: center;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .bill-enacting-clause {
+      margin: 1.4rem 0;
+      font-style: italic;
+    }
+
     .bill-content {
       display: grid;
-      gap: 0.9rem;
+      gap: 0;
+    }
+
+    @media (max-width: 600px) {
+      .legislative-document {
+        padding: 1.25rem 1rem;
+      }
+
+      .explanatory-note p,
+      .bill-section {
+        text-indent: 1.25rem;
+      }
+    }
+
+    @media print {
+      body {
+        display: block;
+        padding: 0;
+        background: #fff;
+      }
+
+      .top-nav,
+      footer,
+      #bill > h2,
+      #bill > .muted {
+        display: none;
+      }
+
+      .page,
+      .legislative-document {
+        border: 0;
+        box-shadow: none;
+      }
     }
 
     footer {
@@ -361,11 +479,39 @@
       <h2>{{ selectedBill.title }}</h2>
       <p class="muted">{{ selectedBill.summary }}</p>
 
-      <div class="bill-content">
-        <article class="card" v-for="(paragraph, idx) in selectedBill.content" :key="idx">
-          <p>{{ paragraph }}</p>
-        </article>
-      </div>
+      <article class="legislative-document" aria-label="Philippine legislative bill draft">
+        <header class="bill-heading">
+          <p>Republic of the Philippines</p>
+          <p class="chamber">{{ selectedBill.chamber }}</p>
+          <p>{{ selectedBill.congress }}</p>
+          <p>{{ selectedBill.session }}</p>
+          <p>Manila</p>
+        </header>
+
+        <p class="bill-number">{{ selectedBill.billNumber }}</p>
+        <p class="bill-sponsor">Introduced by {{ selectedBill.introducedBy }}</p>
+        <hr class="bill-divider" />
+
+        <section class="explanatory-note">
+          <h3>Explanatory Note</h3>
+          <p v-for="(paragraph, idx) in selectedBill.explanatoryNote" :key="`note-${idx}`">{{ paragraph }}</p>
+        </section>
+
+        <section class="bill-proper">
+          <header class="bill-heading">
+            <p class="chamber">{{ selectedBill.chamber }}</p>
+            <p>{{ selectedBill.congress }}</p>
+            <p>{{ selectedBill.session }}</p>
+          </header>
+          <p class="bill-number">{{ selectedBill.billNumber }}</p>
+          <p class="bill-long-title">An Act {{ selectedBill.longTitle }}</p>
+          <p class="bill-enacting-clause">Be it enacted by the Senate and House of Representatives of the Philippines in Congress assembled:</p>
+
+          <div class="bill-content">
+            <p class="bill-section" v-for="(paragraph, idx) in selectedBill.content" :key="idx">{{ paragraph }}</p>
+          </div>
+        </section>
+      </article>
     </section>
 
     <footer>
@@ -388,6 +534,17 @@
               id: 'double-penalty-law-enforcers',
               title: 'Public Trust and Law Enforcement Accountability Act',
               summary: 'Imposes enhanced penalties for crimes committed through official authority, with clearer due-process safeguards, command accountability, and victim-focused reporting.',
+              chamber: 'Senate',
+              congress: 'Twentieth Congress',
+              session: 'First Regular Session',
+              billNumber: 'S. No. ____',
+              introducedBy: '____________________________',
+              longTitle: 'Imposing Enhanced Penalties for Crimes Committed by Law Enforcement Officers Through the Use or Abuse of Official Authority, Establishing Safeguards and Accountability Measures, and for Other Purposes',
+              explanatoryNote: [
+                'Public office is a public trust. Law enforcement officers are entrusted with exceptional authority, government resources, and custody over persons; the misuse of that trust to commit a crime causes particular harm to victims and weakens confidence in public institutions.',
+                'This measure seeks to impose an enhanced penal consequence when official authority facilitates an offense, while preserving constitutional due process and liabilities under existing laws. It also strengthens command accountability, victim and witness protection, and public reporting.',
+                'In view of the foregoing, the immediate passage of this bill is earnestly sought.'
+              ],
               content: [
                 'Section 1. Short Title. This Act shall be known as the Public Trust and Law Enforcement Accountability Act.',
                 'Section 2. Declaration of Policy. The State shall ensure that public office remains a public trust and that no member of a law enforcement agency uses official authority, government resources, or custodial control to commit a crime.',
@@ -408,6 +565,17 @@
               id: 'public-school-enrollment-officials',
               title: 'Public Education Solidarity and Accountability Act',
               summary: 'Requires covered government personnel to prioritize public education from Kindergarten through college in DepEd schools, SUCs/LUCs, or state TVIs, with rights-based exceptions and phased implementation.',
+              chamber: 'Senate',
+              congress: 'Twentieth Congress',
+              session: 'First Regular Session',
+              billNumber: 'S. No. ____',
+              introducedBy: '____________________________',
+              longTitle: 'Requiring Covered Public Officials and Government Personnel to Enroll Their Qualified Dependents in Public Education Institutions, Providing Reasonable Exceptions and Capacity Safeguards, and for Other Purposes',
+              explanatoryNote: [
+                'The Constitution directs the State to protect and promote the right of all citizens to quality education at all levels. Public servants who share a direct stake in public schools can help focus government attention on their quality, accessibility, and resources.',
+                'This measure establishes a phased public-enrollment policy for qualified dependents of covered government personnel. It includes exceptions based on disability support, access, safety, and program availability, while protecting children from discrimination and safeguarding personal data.',
+                'In view of the foregoing, the immediate passage of this bill is earnestly sought.'
+              ],
               content: [
                 'Section 1. Short Title. This Act shall be known as the Public Education Solidarity and Accountability Act.',
                 'Section 2. Declaration of Policy. Pursuant to Article XIV, Section 1 of the 1987 Constitution, Republic Act No. 9155, and Republic Act No. 10931, the State shall protect and promote the right of all citizens to quality basic and tertiary education and strengthen public trust by requiring public officials and government workers to share direct stake in public education institutions.',
