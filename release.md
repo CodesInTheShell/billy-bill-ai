@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2026-08-02
+Reformatted bill detail pages to follow the customary Philippine Senate bill presentation, including legislative headers, bill and sponsor placeholders, an explanatory note, long title, enacting clause, numbered provisions, and print-friendly styling.
+
 ## 2026-04-28
 Updated the public education bill language to remove the qualifier tying local universities and colleges to free-higher-education implementation. The tertiary enrollment rule now consistently focuses on whether the institution is public.
 
