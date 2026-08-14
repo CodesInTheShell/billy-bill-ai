@@ -143,6 +143,52 @@
       margin-bottom: 0.95rem;
     }
 
+    .landing-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.85fr);
+      gap: clamp(1.25rem, 3vw, 2.25rem);
+      align-items: start;
+    }
+
+    .change-card {
+      border: 1px solid #b9ceee;
+      border-radius: 16px;
+      padding: clamp(1rem, 2.5vw, 1.4rem);
+      background: linear-gradient(145deg, #eef5ff, #eefcf8);
+      box-shadow: 0 10px 24px rgba(39, 68, 120, 0.1);
+    }
+
+    .change-card h2 {
+      margin-bottom: 0.45rem;
+      color: #15345f;
+    }
+
+    .change-card p {
+      margin-bottom: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .change-link {
+      display: inline-block;
+      border-radius: 10px;
+      padding: 0.65rem 1rem;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 7px 15px rgba(47, 98, 216, 0.24);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .change-link:hover,
+    .change-link:focus-visible {
+      background: #244fac;
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: 0 9px 18px rgba(47, 98, 216, 0.32);
+    }
+
     h1 {
       font-size: clamp(1.75rem, 5vw, 3rem);
       line-height: 1.15;
@@ -355,6 +401,10 @@
     }
 
     @media (max-width: 600px) {
+      .landing-hero {
+        grid-template-columns: 1fr;
+      }
+
       .legislative-document {
         padding: 1.25rem 1rem;
       }
@@ -415,17 +465,32 @@
     </nav>
 
     <section v-if="currentPage === 'landing'" class="page" id="landing">
-      <span class="badge">Billy Bill AI</span>
-      <h1>A community-driven way to shape legislative proposals.</h1>
-      <p class="lead">
-        Billy Bill AI helps people turn shared concerns into structured legislative proposals and policy drafts.
-        AI assists with organization and language while the community reviews assumptions, suggests changes,
-        and improves each proposal before it is ever considered formal legislation.
-      </p>
-      <p class="poc-note">
-        Proof of concept only: this is a social testing website/app for the idea that AI and the community can
-        work together to develop better public policy. Published drafts are community proposals, not introduced bills or enacted law.
-      </p>
+      <div class="landing-hero">
+        <div>
+          <span class="badge">Billy Bill AI</span>
+          <h1>A community-driven way to shape legislative proposals.</h1>
+          <p class="lead">
+            Billy Bill AI helps people turn shared concerns into structured legislative proposals and policy drafts.
+            AI assists with organization and language while the community reviews assumptions, suggests changes,
+            and improves each proposal before it is ever considered formal legislation.
+          </p>
+          <p class="poc-note">
+            Proof of concept only: this is a social testing website/app for the idea that AI and the community can
+            work together to develop better public policy. Published drafts are community proposals, not introduced bills or enacted law.
+          </p>
+        </div>
+
+        <aside class="change-card" aria-labelledby="change-heading">
+          <h2 id="change-heading">Be part of the change</h2>
+          <p>Request a change to an existing proposal or share an idea for a new one. Your input can help shape better public policy.</p>
+          <a
+            class="change-link"
+            href="https://forms.gle/9SZevNEYjpcspx6K7"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Submit a proposal request</a>
+        </aside>
+      </div>
 
       <section class="grid" aria-label="How Billy Bill AI works">
         <article class="card">
