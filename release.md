@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2026-08-14
+Added a prominent landing-page invitation for community members to request changes to existing proposals or submit ideas for new proposals through the provided Google Form.
+
 ## 2026-08-10
 Restored each proposal's formal, high-level description above its green plain-language summary while removing the "In simple English" label so both descriptions appear without redundant headings.
 
