@@ -38,3 +38,6 @@ Moved branding files into an `assets` folder, updated favicon/logo usage across 
 
 ## 2026-04-27
 Stabilized the navigation bar with a consistent height and applied a gradient background aligned to the site palette so it no longer shifts between pages. Rewrote the law-enforcer accountability bill into a full professional draft with formal sections and references to applicable Philippine laws.
+
+## 2026-08-21
+Added the Open Digital Sovereignty and Government Technology Act, an open-source-first government technology proposal with justified proprietary-software exceptions and safeguards for security, data, cloud, AI, supply chains, interoperability, and local capability.
