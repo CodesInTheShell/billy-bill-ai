@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2026-08-22
+Added the Public Servants Domestic Medical Care Act, requiring government officials to obtain medical care in the Philippines unless medically necessary care is unavailable domestically, with independent review, emergency, privacy, and accountability safeguards.
+
 ## 2026-08-14
 Added a prominent landing-page invitation for community members to request changes to existing proposals or submit ideas for new proposals through the provided Google Form.
 
