@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2026-08-23
+Added the Good Samaritan Responder Support and Fair Investigation Act, providing prompt counsel, emergency aid, and evidence-based review for people who intervene in defense of others while preserving due process and accountability for unlawful force.
+
 ## 2026-08-22
 Added the Public Servants Domestic Medical Care Act, requiring government officials to obtain medical care in the Philippines unless medically necessary care is unavailable domestically, with independent review, emergency, privacy, and accountability safeguards.
 
