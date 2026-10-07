@@ -1,5 +1,11 @@
 # Release Notes
 
+## 2026-10-07
+Revised the Castle Law proposal’s plain-language summary to emphasize home and family protection, no duty to retreat, and deterrence of unlawful home intrusion.
+
+## 2026-10-07
+Added the Castle Law: Home and Family Defense Act, proposing a presumption of lawful defense against forcible home intrusion, necessary force including lethal force, and no duty to retreat. The draft includes exceptions, fair investigation procedures, and safeguards against retaliation and abuse.
+
 ## 2026-08-23
 Added the Good Samaritan Responder Support and Fair Investigation Act, providing prompt counsel, emergency aid, and evidence-based review for people who intervene in defense of others while preserving due process and accountability for unlawful force.
 
