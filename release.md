@@ -1,6 +1,9 @@
 # Release Notes
 
 ## 2026-10-08
+Renamed and refocused the AFP proposal on military oversight and investigative powers over other law enforcement agencies, removing the proposed reciprocal-investigation framework. Updated the summaries, rationale, jurisdiction, and unit provisions to match that scope.
+
+## 2026-10-08
 Added the AFP and Law Enforcement Mutual Accountability Act, proposing defined AFP policing powers over serious LEA misconduct and reciprocal civilian investigation of AFP personnel. The draft includes specialized units, civilian and judicial oversight, anti-interference protections, and constitutional activation requirements.
 
 ## 2026-10-07
