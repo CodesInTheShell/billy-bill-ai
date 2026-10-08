@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2026-10-08
+Added the AFP and Law Enforcement Mutual Accountability Act, proposing defined AFP policing powers over serious LEA misconduct and reciprocal civilian investigation of AFP personnel. The draft includes specialized units, civilian and judicial oversight, anti-interference protections, and constitutional activation requirements.
+
 ## 2026-10-07
 Revised the Castle Law proposal’s plain-language summary to emphasize home and family protection, no duty to retreat, and deterrence of unlawful home intrusion.
 
