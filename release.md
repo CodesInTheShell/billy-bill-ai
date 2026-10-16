@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2026-10-16
+Added the Patient Medical Documentation Rights and Protection Act, guaranteeing patient-authorized recording of care and healthcare transactions in public and private facilities. The proposal defines criminal penalties for intentional obstruction, evidence destruction, and retaliation, with privacy, medical-safety, and due-process safeguards.
+
 ## 2026-10-08
 Added the AFP and Law Enforcement Mutual Accountability Act, proposing defined AFP policing powers over serious LEA misconduct and reciprocal civilian investigation of AFP personnel. The draft includes specialized units, civilian and judicial oversight, anti-interference protections, and constitutional activation requirements.
 
