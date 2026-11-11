@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2026-11-11
+Added the Motorists’ Rights and Reasonable Traffic Regulation Act, proposing evidence-based review of traffic restrictions, proportionate penalties, fair enforcement, and protection of family mobility. The draft reviews helmet and footwear rules while preserving existing requirements pending lawful amendment and safeguards for passengers and other road users.
+
 ## 2026-10-16
 Added the Patient Medical Documentation Rights and Protection Act, guaranteeing patient-authorized recording of care and healthcare transactions in public and private facilities. The proposal defines criminal penalties for intentional obstruction, evidence destruction, and retaliation, with privacy, medical-safety, and due-process safeguards.
 
